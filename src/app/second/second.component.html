@@ -1,0 +1,38 @@
+<br>
+ <button type="button" (click)="exibirTabela()" class="btn btn-success">Exibir/Ocultar</button>
+<br><br>
+<table class="table table-striped" *ngIf="this.esconderTabela"> 
+    <thead>
+      <tr>        
+        <th scope="col">Titulo</th>
+        <th scope="col">Tipo</th>
+        <th scope="col">Descrição</th>
+        <th scope="col">Altura</th>
+        <th scope="col">Largura</th>
+        <th scope="col">Preço</th>
+        <th scope="col">Avaliação</th>
+        <th scope="col">Comprar</th> 
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let produto of produto">
+        <th scope="row">{{produto.title}}</th>
+        <td>{{produto.type}}</td>
+        <td>{{produto.description}}</td>
+        <td>{{produto.height}}</td>
+        <td>{{produto.width}}</td>
+        <td>{{produto.price}}</td>
+        <td>{{produto.rating}}</td>        
+        <td> <p 
+            *ngIf="produto.price > 0 && produto.price <= 100; else prodPrice"
+            style="color:green">
+                Sim
+        </p></td>
+        <ng-template #prodPrice>
+            <p style="color:red">
+            Não
+          </ng-template>
+      </tr>
+    </tbody>
+  </table>
+
